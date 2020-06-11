@@ -1,0 +1,65 @@
+{
+  "name": "NODE_MYSQL_TEMPLATE_CLOUD_API",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A Cloud API for demo nodejs and mysql",
+  "author": "s3lab.",
+  "apidoc": {
+    "title": "API DOCS",
+    "version": "1.0.0",
+    "url": "http://localhost:3000/docs"
+  },
+  "engines": {
+    "node": "8.11.4"
+  },
+  "main": "server.js",
+  "scripts": {
+    "debug": "nodemon server.js",
+    "update": "npm update sharp --save",
+    "remove": "npm remove",
+    "install": "npm install find-remove@^1.0.1",
+    "genAPIDoc": "apidoc -i ./app/route/ -o ./public/docs/"
+  },
+  "dependencies": {
+    "@google-cloud/storage": "^1.7.0",
+    "async": "^2.6.1",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
+    "cron": "^1.5.0",
+    "express": "^4.16.4",
+    "extract-zip": "^1.6.7",
+    "find-remove": "^1.0.1",
+    "fluent-ffmpeg": "^2.1.2",
+    "fs": "0.0.1-security",
+    "fs-extra": "^2.1.2",
+    "image-size": "^0.6.3",
+    "jsonwebtoken": "^8.3.0",
+    "md5": "^2.2.1",
+    "md5-file": "^3.2.3",
+    "method-override": "^2.3.10",
+    "moment": "^2.22.2",
+    "multer": "^1.4.1",
+    "mysql": "^2.16.0",
+    "mysql2": "^1.6.4",
+    "node-gyp": "^3.8.0",
+    "path": "^0.12.7",
+    "redis": "^2.8.0",
+    "request": "^2.88.0",
+    "sequelize": "^4.41.2",
+    "sharp": "^0.20.8",
+    "socket.io": "^2.1.1",
+    "socket.io-redis": "^5.2.0",
+    "validator": "^7.2.0"
+  },
+  "devDependencies": {
+    "apidoc": "^0.20.0",
+    "morgan": "^1.9.1"
+  },
+  "keywords": [
+    "media",
+    "smart",
+    "system"
+  ],
+  "license": "MIT",
+  "//": "prerequisite: [node-gyp for build the sharp], [apidoc --save-dev for document], [pm2 -g for process manager]"
+}
