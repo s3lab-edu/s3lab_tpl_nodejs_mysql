@@ -1,0 +1,37 @@
+{
+  "apps" : [{
+    "name"      : "s3lab_tpl_nodejs_mysql",
+    "script"    : "./server.js",
+    "error_file": "./logs/err_main.log",
+    "out_file" : "./logs/out_main.log",
+    "instances" : 1,
+    "exec_mode" : "cluster",
+    "watch"     : false,
+    "ignore_watch" : ["node_modules", "public", "logs"],
+    "kill_timeout" : 3000,
+    "wait_ready": true,
+    "listen_timeout" : 3000,
+    "env_development": {
+      "NODE_ENV": "development",
+      "NODE_PORT":3000,
+
+      "DB_HOST":"127.0.0.1",
+      "DB_PORT": "3306",
+      "DB_USER": "root",
+      "DB_PASSWORD": "",
+      "DB_NAME": "audio_book",
+      "DB_DIALECT": "mysql"
+    },
+    "env_production" : {
+      "NODE_ENV": "production",
+      "NODE_PORT":3000,
+
+      "DB_HOST":"54.180.104.2",
+      "DB_PORT": "3306",
+      "DB_USER": "geminisoft",
+      "DB_PASSWORD": "Geminisoft@234",
+      "DB_NAME": "mymy01",
+      "DB_DIALECT": "mysql"
+    }
+  }]
+}
