@@ -1,9 +1,8 @@
+const Rest = require('../utils/restware');
 module.exports = {
     getAll: function (req, res) {
         const out = { title: 'categories', id: 'all'};
-        res.status(200);
-        res.contentType('json');
-        return res.json(out);
+        return Rest.sendSuccessOne(res, out, 200);
     },
 
     getOne: function (req, res) {
