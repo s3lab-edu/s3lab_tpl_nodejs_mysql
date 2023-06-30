@@ -28,23 +28,12 @@ App.use(MethodOverride('X-HTTP-Method-Override'));
 // support CORS from API
 App.use(cors());
 
-// Routes ===============================================
-App.get('/api/v1/categories/:id', (req, res) => {
-    let id = req.params.id || '';
-    res.send('Hello category: ' + id);
-});
-
-App.get('/api/v1/categories', (req, res) => {
-    const out = { message: 'helloWorld!'};
-    res.status(200);
-    res.contentType('json');
-    return res.json(out);
-});
-
-// Create App
+// Routes ==================================================
+require('./app/route')(App); // configure our routes
+// Create app
 let server = require('http').createServer(App);
 
-// Start App: http://IP_Address:port
+// Start app: http://IP_Address:port
 server.listen(3000, function () {
     console.log('API V2.1 started to listening on port %d', 3000);
 });
