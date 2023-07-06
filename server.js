@@ -3,8 +3,19 @@ let Express = require('express');
 let BodyParser = require('body-parser');
 let MethodOverride = require('method-override');
 const cors = require('cors');
+const morgan = require('morgan');
 
 let App = Express();
+
+// log by using morgan
+App.use(morgan('combined'));
+App.use(
+    morgan('dev', {
+        skip: function(req, res) {
+            return res.statusCode < 400;
+        },
+    }),
+);
 
 // parse application/json
 App.use(BodyParser.json({
