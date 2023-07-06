@@ -1,4 +1,4 @@
-const Rest = require('../utils/restware');
+const Rest = require('../utils/restware.util');
 module.exports = {
     getAll: function (req, res) {
         const out = { title: 'categories', id: 'all'};

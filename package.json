@@ -22,7 +22,9 @@
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
     "method-override": "^2.3.8",
-    "cors": "^2.8.5"
+    "cors": "^2.8.5",
+    "sequelize": "^6.6.5",
+    "mysql2": "^2.3.3"
   },
   "devDependencies": {
     "apidoc": "^0.29.0",

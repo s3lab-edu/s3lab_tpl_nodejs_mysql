@@ -25,12 +25,11 @@
     "env_production" : {
       "NODE_ENV": "production",
       "NODE_PORT":3000,
-
-      "DB_HOST":"54.180.104.2",
+      "DB_HOST":"43.200.191.225",
       "DB_PORT": "3306",
       "DB_USER": "geminisoft",
-      "DB_PASSWORD": "Geminisoft@234",
-      "DB_NAME": "mymy01",
+      "DB_PASSWORD": "Geminisoft@",
+      "DB_NAME": "audio_book",
       "DB_DIALECT": "mysql"
     }
   }]

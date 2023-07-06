@@ -2,7 +2,7 @@
  * Created by bioz on 1/13/2017.
  */
 // our components
-const categoriesService = require('../services/categories.service');
+const categoriesService = require('../services/category.service');
 
 module.exports = function (app) {
     app.get('/api/v1/categories', categoriesService.getAll);
