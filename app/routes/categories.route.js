@@ -80,4 +80,7 @@ module.exports = function (app) {
      *     }
      */
     app.get('/api/v1/categories/:id', categoriesService.getOne);
+    app.post('/api/v1/auth/categories', categoriesService.createOne);
+    app.put('/api/v1/auth/categories/:id', categoriesService.updateOne);
+    app.delete('/api/v1/auth/categories/:id', categoriesService.deleteOne);
 };

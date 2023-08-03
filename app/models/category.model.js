@@ -2,27 +2,15 @@ const sequel = require('sequelize');
 const mySequel = require('../utils/sequelize.util');
 const account = require('./account.model');
 
-const book = mySequel.define('book', {
+const category = mySequel.define('category', {
     id: {
         type: sequel.BIGINT(20),
         autoIncrement: true,
         allowNull: false,
         primaryKey: true,
     },
-    author: {
-        type: sequel.STRING(128),
-        allowNull: false,
-    },
     title: {
         type: sequel.STRING(1024),
-        allowNull: false,
-    },
-    parts: {
-        type: sequel.INTEGER,
-        allowNull: false,
-    },
-    category: {
-        type: sequel.BIGINT(20),
         allowNull: false,
     },
     created_by: {
@@ -59,7 +47,7 @@ const book = mySequel.define('book', {
     includeDeleted: true,
     paranoid: true,
     freezeTableName: true,
-    tableName: 'tbl_book',
+    tableName: 'tbl_category',
 });
 
-module.exports = book;
+module.exports = category;
