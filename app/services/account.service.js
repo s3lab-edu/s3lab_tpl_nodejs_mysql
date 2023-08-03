@@ -111,6 +111,31 @@ module.exports = {
         return rest.sendSuccessOne(res, out, 200);
     },
 
+    verifyAccount: function(accessUserId, accessLoginName, callback) {
+        try {
+            const where = {id: accessUserId, login_name: accessLoginName};
+            const attributes = ['id', 'login_name', 'full_name'];
+
+            account.findOne({
+                where: where,
+                attributes: attributes,
+                raw: true,
+            }).then((result)=>{
+                'use strict';
+                if (result) {
+                    return callback(null, null, 200, null, result);
+                } else {
+                    return callback(1, 'wrong_account', 403, null, null);
+                }
+            }).catch(function(error) {
+                'use strict';
+                return callback(1, 'verify_account_fail', 400, error, null);
+            });
+        } catch (error) {
+            return callback(1, 'verify_account_fail', 400, error, null);
+        }
+    },
+
     login: function(req, res) {
         const login_name = req.body.login_name || '';
         const password = req.body.password || '';

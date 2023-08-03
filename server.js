@@ -39,6 +39,8 @@ App.use(MethodOverride('X-HTTP-Method-Override'));
 // support CORS from API
 App.use(cors());
 
+// Auth Middleware - This will check if the token is valid
+App.all('/api/v1/auth/*', [require('./app/middlewares/auth.middelwares')]);
 // Routes ==================================================
 require('./app/route')(App); // configure our routes
 // Create app
