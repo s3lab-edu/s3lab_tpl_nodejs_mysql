@@ -24,7 +24,9 @@
     "method-override": "^2.3.8",
     "cors": "^2.8.5",
     "sequelize": "^6.6.5",
-    "mysql2": "^2.3.3"
+    "mysql2": "^2.3.3",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.1"
   },
   "devDependencies": {
     "apidoc": "^0.29.0",

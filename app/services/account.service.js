@@ -6,6 +6,10 @@
 // our components
 const account = require('../models/account.model');
 const rest = require('../utils/restware.util');
+const config = require('../configs/general.config');
+
+const bCrypt = require('bcryptjs');
+const jsonWebToken = require('jsonwebtoken');
 
 module.exports = {
     register: function(req, res) {
@@ -108,8 +112,46 @@ module.exports = {
     },
 
     login: function(req, res) {
-        const out = { title: 'account', action: 'login'};
-        return rest.sendSuccessOne(res, out, 200);
+        const login_name = req.body.login_name || '';
+        const password = req.body.password || '';
+
+        const where = {login_name: login_name};
+        const attributes = ['id', 'login_name', 'password', 'full_name'];
+        account.findOne( {
+            where: where,
+            attributes: attributes}).then( (account)=>{
+            'use strict';
+            if (account) {
+                bCrypt.compare( password, account.password, function(error, result) {
+                    if (result === true) {
+                        const payload = {
+                            id: account.id,
+                            login_name: account.login_name,
+                            full_name: account.full_name
+                        };
+                        jsonWebToken.sign(
+                            payload,
+                            config.jwtAuthKey,
+                            {expiresIn: config.tokenLoginExpiredDays},
+                            function(error, token) {
+                                if (error) {
+                                    return rest.sendError(res, 4000, 'create_token_fail', 400, error);
+                                } else {
+                                    return rest.sendSuccessToken(res, token, payload);
+                                }
+                            },
+                        );
+                    } else {
+                        return rest.sendError(res, 401, 'wrong_password', 401, null);
+                    }
+                });
+            } else {
+                return rest.sendError(res, 401, 'account_unavailable', 401, null);
+            }
+        }).catch(function(error) {
+            'use strict';
+            return rest.sendError(res, 401, 'login_fail', 401, error);
+        });
     },
 };
 

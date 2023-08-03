@@ -7,4 +7,6 @@ module.exports = {
         database: process.env.DB_NAME,
         dialect: process.env.DB_DIALECT,
     },
+    jwtAuthKey: 'abcxyz',
+    tokenLoginExpiredDays:'25 days'
 };

@@ -28,7 +28,7 @@
       "DB_HOST":"43.200.191.225",
       "DB_PORT": "3306",
       "DB_USER": "geminisoft",
-      "DB_PASSWORD": "Geminisoft@",
+      "DB_PASSWORD": "Geminisoft@090684",
       "DB_NAME": "audio_book",
       "DB_DIALECT": "mysql"
     }

@@ -60,21 +60,13 @@ const sendSuccessWebContent = function(res, data, iHttpCode) {
     return res.end(out);
 };
 
-const sendSuccessToken = function(res, token, user, message = '') {
+const sendSuccessToken = function(res, token, payload, message = '') {
     if (!res) {
         return;
     }
     const out = {};
-    const data = {};
-
+    const data = payload;
     data.token = token;
-    data.id = user.id;
-    data.loginName = user.loginName;
-    data.displayName = user.displayName;
-    data.email = user.email;
-    data.type = user.type;
-    data.quota = user.quota;
-    data.language = user.language;
 
     out.data = data;
     out.message = message;

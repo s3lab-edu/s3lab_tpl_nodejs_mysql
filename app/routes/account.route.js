@@ -44,6 +44,7 @@ module.exports = function (app) {
      *     }
      */
     app.get('/api/v1/accounts/:id', accountService.getOne);
+    app.post('/api/v1/accounts/login', accountService.login);
     app.post('/api/v1/accounts/register', accountService.register);
     /**
      * @api {POST} /api/v1/accounts Create One
