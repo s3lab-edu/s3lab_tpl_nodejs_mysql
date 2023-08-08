@@ -9,8 +9,27 @@ const rest = require('../utils/restware.util');
 
 module.exports = {
     create: function(req, res) {
-        const out = { title: 'book', action: 'create'};
-        return rest.sendSuccessOne(res, out, 200);
+        try {
+            const query = {};
+            query.created_by = req.body.accessAccountId;
+            query.updated_by = req.body.accessAccountId;
+            query.title = req.body.title;
+            query.category = req.body.category;
+            query.author = req.body.author;
+            query.parts = req.body.parts;
+
+            book.create(query).then((result)=>{
+                'use strict';
+                return rest.sendSuccessOne(res, result, 200);
+            }).catch(function(error) {
+                'use strict';
+                console.log(error);
+                return rest.sendError(res, 1, 'create_book_fail', 400, error);
+            });
+        } catch (error) {
+            console.log(error);
+            return rest.sendError(res, 1, 'create_book_fail', 400, error);
+        }
     },
 
     getOne: function(req, res) {
@@ -83,13 +102,64 @@ module.exports = {
     },
 
     update: function(req, res) {
-        const out = { title: 'book', action: 'update'};
-        return rest.sendSuccessOne(res, out, 200);
+        try {
+            const query = {};
+            query.updated_by = req.body.accessAccountId;
+            if (req.body.title) {
+                query.title = req.body.title;
+            }
+            if (req.body.category) {
+                query.category = req.body.category;
+            }
+            if (req.body.author) {
+                query.author = req.body.author;
+            }
+            if (req.body.parts) {
+                query.parts = req.body.parts;
+            }
+            const where = {id: req.params.id};
+
+            book.update(
+                query,
+                {where: where,
+                    returning: true,
+                    plain: true}).then((result)=>{
+                'use strict';
+                if ( (result) && (result.length === 2) ) {
+                    return rest.sendSuccessOne(res, {id: req.params.id}, 200);
+                } else {
+                    return rest.sendError(res, 1, 'update_book_fail', 400, null);
+                }
+            }).catch(function(error) {
+                'use strict';
+                console.log(error);
+                return rest.sendError(res, 1, 'update_book_fail', 400, error);
+            });
+        } catch (error) {
+            console.log(error);
+            return rest.sendError(res, 1, 'update_book_fail', 400, error);
+        }
     },
 
     delete: function(req, res) {
-        const out = { title: 'book', action: 'delete'};
-        return rest.sendSuccessOne(res, out, 200);
+        try {
+            const where = {id: req.params.id};
+
+            book.destroy(
+                {where: where}).then((result)=>{
+                'use strict';
+                if (result >= 1) {
+                    return rest.sendSuccessOne(res, {id: req.params.id}, 200);
+                } else {
+                    return rest.sendError(res, 1, 'delete_book_fail', 400, null);
+                }
+            }).catch(function(error) {
+                'use strict';
+                return rest.sendError(res, 1, 'delete_book_fail', 400, error);
+            });
+        } catch (error) {
+            return rest.sendError(res, 1, 'delete_book_fail', 400, error);
+        }
     }
 };
 

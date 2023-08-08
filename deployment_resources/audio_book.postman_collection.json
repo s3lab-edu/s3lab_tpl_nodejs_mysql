@@ -1,0 +1,400 @@
+{
+	"info": {
+		"_postman_id": "95eca74f-25ff-4a51-b869-651cc7afd8d9",
+		"name": "audio_book",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1340587"
+	},
+	"item": [
+		{
+			"name": "account_get_all",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://dev-api.wetop.me/book_demo/api/v1/accounts",
+					"protocol": "https",
+					"host": [
+						"dev-api",
+						"wetop",
+						"me"
+					],
+					"path": [
+						"book_demo",
+						"api",
+						"v1",
+						"accounts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "book_get_one",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://dev-api.wetop.me/book_demo/api/v1/books/1",
+					"protocol": "https",
+					"host": [
+						"dev-api",
+						"wetop",
+						"me"
+					],
+					"path": [
+						"book_demo",
+						"api",
+						"v1",
+						"books",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "book_get_all",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/v1/books",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "account_login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "login_name",
+							"value": "webmaster",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "bioz",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/accounts/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"accounts",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "books_update_one",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "access_token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibG9naW5fbmFtZSI6IndlYm1hc3RlciIsImZ1bGxfbmFtZSI6ImFkbWluaXN0cmF0b3IiLCJpYXQiOjE2OTEwNzkzNzAsImV4cCI6MTY5MzIzOTM3MH0.BqxOphdxwzlWUNm7hPTktgAF5qxUWzuHLC4pQIxOPcM2",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "login_name",
+							"value": "webmaster",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "bioz",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/auth/books/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"books",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "categories_create_one",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "access_token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibG9naW5fbmFtZSI6IndlYm1hc3RlciIsImZ1bGxfbmFtZSI6ImFkbWluaXN0cmF0b3IiLCJpYXQiOjE2OTEwNzkzNzAsImV4cCI6MTY5MzIzOTM3MH0.BqxOphdxwzlWUNm7hPTktgAF5qxUWzuHLC4pQIxOPcM",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "title",
+							"value": "nhà có ba con mèo",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "bioz",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/auth/categories",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "categories_update_one",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "access_token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibG9naW5fbmFtZSI6IndlYm1hc3RlciIsImZ1bGxfbmFtZSI6ImFkbWluaXN0cmF0b3IiLCJpYXQiOjE2OTEwNzkzNzAsImV4cCI6MTY5MzIzOTM3MH0.BqxOphdxwzlWUNm7hPTktgAF5qxUWzuHLC4pQIxOPcM",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "title",
+							"value": "Truyện Trinh Thám",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "bioz",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/auth/categories/6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"categories",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "category_get_one",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/v1/categories/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"categories",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "category_get_all",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/v1/categories",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "books_create_one",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "access_token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibG9naW5fbmFtZSI6IndlYm1hc3RlciIsImZ1bGxfbmFtZSI6ImFkbWluaXN0cmF0b3IiLCJpYXQiOjE2OTE1MTY0NzAsImV4cCI6MTY5MzY3NjQ3MH0.KZVNDNA5tgeTIp-W6hqeK65abYFlGK8SzqVqt7cpkbM",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "title",
+							"value": "anh yeu em",
+							"type": "text"
+						},
+						{
+							"key": "author",
+							"value": "bioz",
+							"type": "text"
+						},
+						{
+							"key": "parts",
+							"value": "10",
+							"type": "text"
+						},
+						{
+							"key": "category",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/auth/books",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "books_delete_one",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-length": true
+				}
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "access_token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibG9naW5fbmFtZSI6IndlYm1hc3RlciIsImZ1bGxfbmFtZSI6ImFkbWluaXN0cmF0b3IiLCJpYXQiOjE2OTE1MTY0NzAsImV4cCI6MTY5MzY3NjQ3MH0.KZVNDNA5tgeTIp-W6hqeK65abYFlGK8SzqVqt7cpkbM",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "login_name",
+							"value": "webmaster",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "bioz",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/auth/books/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"books",
+						"3"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
