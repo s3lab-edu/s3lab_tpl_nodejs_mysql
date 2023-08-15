@@ -5,7 +5,7 @@
 const accountService = require('../services/account.service');
 
 module.exports = function (app) {
-    app.get('/api/v1/accounts', accountService.getAll);
+    app.get('/api/v1/auth/accounts', accountService.getAll);
     /**
      * @api {GET} /api/v1/accounts/:id Get One
      * @apiVersion 0.4.0
@@ -43,7 +43,7 @@ module.exports = function (app) {
      *       "message": "invalid input"
      *     }
      */
-    app.get('/api/v1/accounts/:id', accountService.getOne);
+    app.get('/api/v1/auth/accounts/:id', accountService.getOne);
     app.post('/api/v1/accounts/login', accountService.login);
     app.post('/api/v1/accounts/register', accountService.register);
     /**
@@ -83,9 +83,9 @@ module.exports = function (app) {
      *       "message": "invalid input"
      *     }
      */
-    app.post('/api/v1/accounts', accountService.create);
-    app.put('/api/v1/accounts/:id', accountService.update);
-    app.put('/api/v1/accounts', accountService.updates);
-    app.delete('/api/v1/accounts/:id', accountService.delete);
-    app.delete('/api/v1/accounts', accountService.deletes);
+    app.post('/api/v1/auth/accounts', accountService.create);
+    app.put('/api/v1/auth/accounts/:id', accountService.update);
+    app.put('/api/v1/auth/accounts', accountService.updates);
+    app.delete('/api/v1/auth/accounts/:id', accountService.delete);
+    app.delete('/api/v1/auth/accounts', accountService.deletes);
 };

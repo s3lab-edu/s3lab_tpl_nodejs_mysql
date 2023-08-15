@@ -18,8 +18,31 @@ module.exports = {
     },
 
     create: function(req, res) {
-        const out = { title: 'account', action: 'create'};
-        return rest.sendSuccessOne(res, out, 200);
+        try {
+            const query = {};
+            query.created_by = req.body.accessAccountId;
+            query.updated_by = req.body.accessAccountId;
+            query.login_name = req.body.login_name;
+            query.full_name = req.body.full_name;
+
+            const originalPassword  =req.body.password;
+
+            const salt = bCrypt.genSaltSync(10);
+            const hash = bCrypt.hashSync(originalPassword, salt);
+            query.password = hash;
+
+            account.create(query).then((result)=>{
+                'use strict';
+                return rest.sendSuccessOne(res, result, 200);
+            }).catch(function(error) {
+                'use strict';
+                console.log(error);
+                return rest.sendError(res, 1, 'create_account_fail', 400, error);
+            });
+        } catch (error) {
+            console.log(error);
+            return rest.sendError(res, 1, 'create_account_fail', 400, error);
+        }
     },
 
     getOne: function(req, res) {
@@ -92,8 +115,40 @@ module.exports = {
     },
 
     update: function(req, res) {
-        const out = { title: 'account', action: 'update'};
-        return rest.sendSuccessOne(res, out, 200);
+        try {
+            const query = {};
+            query.updated_by = req.body.accessAccountId;
+            if (req.body.full_name) {
+                query.full_name = req.body.full_name;
+            }
+            if (req.body.password) {
+                const originalPassword  =req.body.password;
+                const salt = bCrypt.genSaltSync(10);
+                const hash = bCrypt.hashSync(originalPassword, salt);
+                query.password = hash;
+            }
+            const where = {id: req.params.id};
+
+            account.update(
+                query,
+                {where: where,
+                    returning: true,
+                    plain: true}).then((result)=>{
+                'use strict';
+                if ( (result) && (result.length === 2) ) {
+                    return rest.sendSuccessOne(res, {id: req.params.id}, 200);
+                } else {
+                    return rest.sendError(res, 1, 'update_account_fail', 400, null);
+                }
+            }).catch(function(error) {
+                'use strict';
+                console.log(error);
+                return rest.sendError(res, 1, 'update_account_fail', 400, error);
+            });
+        } catch (error) {
+            console.log(error);
+            return rest.sendError(res, 1, 'update_account_fail', 400, error);
+        }
     },
 
     updates: function(req, res) {
