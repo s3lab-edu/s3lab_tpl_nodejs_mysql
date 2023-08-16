@@ -31,6 +31,16 @@
       "DB_PASSWORD": "Geminisoft@",
       "DB_NAME": "audio_book",
       "DB_DIALECT": "mysql"
+    },
+    "env_demo" : {
+      "NODE_ENV": "demo",
+      "NODE_PORT":3000,
+      "DB_HOST":"db4free.net",
+      "DB_PORT": "3306",
+      "DB_USER": "audiobook",
+      "DB_PASSWORD": "thanhbinh88",
+      "DB_NAME": "audiobook",
+      "DB_DIALECT": "mysql"
     }
   }]
 }
