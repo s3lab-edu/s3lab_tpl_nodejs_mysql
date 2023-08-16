@@ -10,7 +10,7 @@
     "sampleUrl": "http://localhost:3000"
   },
   "engines": {
-    "node": "16.x"
+    "node": "18.x"
   },
   "main": "server.js",
   "scripts": {
